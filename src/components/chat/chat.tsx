@@ -3,7 +3,7 @@
 import type { UIMessage } from "ai";
 import { DefaultChatTransport } from "ai";
 import { useChat } from "@ai-sdk/react";
-import { useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 import { DEFAULT_PERSONA_ID } from "@/ai/models";
 import { ChatHeader } from "@/components/chat/chat-header";
@@ -26,6 +26,18 @@ export function Chat({
     initialPersonaId ?? DEFAULT_PERSONA_ID
   );
 
+  const personaIdRef = useRef(personaId);
+  personaIdRef.current = personaId;
+
+  const transport = useMemo(
+    () =>
+      new DefaultChatTransport({
+        api: "/api/chat",
+        body: () => ({ id, personaId: personaIdRef.current }),
+      }),
+    [id]
+  );
+
   const {
     messages,
     setMessages,
@@ -34,10 +46,7 @@ export function Chat({
     stop,
   } = useChat({
     id,
-    transport: new DefaultChatTransport({
-      api: "/api/chat",
-      body: { id, personaId },
-    }),
+    transport,
     messages: initialMessages,
     onFinish: () => {
       window.history.replaceState({}, "", `/chat/${id}`);
