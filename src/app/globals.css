@@ -1,0 +1,317 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--font-sans: var(--font-nunito);
+	--font-display: var(--font-baloo2);
+	--font-mono: var(--font-geist-mono);
+	--color-sidebar-ring: var(--sidebar-ring);
+	--color-sidebar-border: var(--sidebar-border);
+	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+	--color-sidebar-accent: var(--sidebar-accent);
+	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+	--color-sidebar-primary: var(--sidebar-primary);
+	--color-sidebar-foreground: var(--sidebar-foreground);
+	--color-sidebar: var(--sidebar);
+	--color-chart-5: var(--chart-5);
+	--color-chart-4: var(--chart-4);
+	--color-chart-3: var(--chart-3);
+	--color-chart-2: var(--chart-2);
+	--color-chart-1: var(--chart-1);
+	--color-ring: var(--ring);
+	--color-input: var(--input);
+	--color-border: var(--border);
+	--color-destructive: var(--destructive);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-accent: var(--accent);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-muted: var(--muted);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-secondary: var(--secondary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-primary: var(--primary);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-popover: var(--popover);
+	--color-card-foreground: var(--card-foreground);
+	--color-card: var(--card);
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 4px);
+	--radius-2xl: calc(var(--radius) + 8px);
+	--radius-3xl: calc(var(--radius) + 12px);
+	--radius-4xl: calc(var(--radius) + 16px);
+
+	/* Persona color tokens */
+	--color-persona-5yo-accent: var(--persona-5yo-accent);
+	--color-persona-5yo-bg: var(--persona-5yo-bg);
+	--color-persona-5yo-border: var(--persona-5yo-border);
+	--color-persona-5yo-gradient: var(--persona-5yo-gradient);
+
+	--color-persona-15yo-accent: var(--persona-15yo-accent);
+	--color-persona-15yo-bg: var(--persona-15yo-bg);
+	--color-persona-15yo-border: var(--persona-15yo-border);
+	--color-persona-15yo-gradient: var(--persona-15yo-gradient);
+
+	--color-persona-pirate-accent: var(--persona-pirate-accent);
+	--color-persona-pirate-bg: var(--persona-pirate-bg);
+	--color-persona-pirate-border: var(--persona-pirate-border);
+	--color-persona-pirate-gradient: var(--persona-pirate-gradient);
+
+	--color-persona-comedian-accent: var(--persona-comedian-accent);
+	--color-persona-comedian-bg: var(--persona-comedian-bg);
+	--color-persona-comedian-border: var(--persona-comedian-border);
+	--color-persona-comedian-gradient: var(--persona-comedian-gradient);
+
+	--color-persona-poet-accent: var(--persona-poet-accent);
+	--color-persona-poet-bg: var(--persona-poet-bg);
+	--color-persona-poet-border: var(--persona-poet-border);
+	--color-persona-poet-gradient: var(--persona-poet-gradient);
+
+	--color-persona-alien-accent: var(--persona-alien-accent);
+	--color-persona-alien-bg: var(--persona-alien-bg);
+	--color-persona-alien-border: var(--persona-alien-border);
+	--color-persona-alien-gradient: var(--persona-alien-gradient);
+}
+
+:root {
+	--radius: 0.75rem;
+
+	/* Warm coral palette */
+	--background: oklch(0.985 0.008 75);
+	--foreground: oklch(0.205 0.02 30);
+	--card: oklch(0.995 0.005 75);
+	--card-foreground: oklch(0.205 0.02 30);
+	--popover: oklch(0.995 0.005 75);
+	--popover-foreground: oklch(0.205 0.02 30);
+	--primary: oklch(0.65 0.19 25);
+	--primary-foreground: oklch(0.99 0.005 75);
+	--secondary: oklch(0.96 0.015 60);
+	--secondary-foreground: oklch(0.3 0.03 30);
+	--muted: oklch(0.96 0.012 65);
+	--muted-foreground: oklch(0.5 0.02 40);
+	--accent: oklch(0.94 0.025 50);
+	--accent-foreground: oklch(0.25 0.03 30);
+	--destructive: oklch(0.577 0.245 27.325);
+	--border: oklch(0.915 0.015 65);
+	--input: oklch(0.915 0.015 65);
+	--ring: oklch(0.65 0.19 25);
+	--chart-1: oklch(0.646 0.222 41.116);
+	--chart-2: oklch(0.6 0.118 184.704);
+	--chart-3: oklch(0.398 0.07 227.392);
+	--chart-4: oklch(0.828 0.189 84.429);
+	--chart-5: oklch(0.769 0.188 70.08);
+	--sidebar: oklch(0.98 0.01 70);
+	--sidebar-foreground: oklch(0.205 0.02 30);
+	--sidebar-primary: oklch(0.65 0.19 25);
+	--sidebar-primary-foreground: oklch(0.99 0.005 75);
+	--sidebar-accent: oklch(0.94 0.025 50);
+	--sidebar-accent-foreground: oklch(0.25 0.03 30);
+	--sidebar-border: oklch(0.915 0.015 65);
+	--sidebar-ring: oklch(0.65 0.19 25);
+
+	/* Persona light mode tokens — punchy, distinct tints */
+	--persona-5yo-accent: oklch(0.75 0.18 75);
+	--persona-5yo-bg: oklch(0.94 0.08 80);
+	--persona-5yo-border: oklch(0.85 0.12 78);
+	--persona-5yo-gradient: oklch(0.8 0.12 75);
+
+	--persona-15yo-accent: oklch(0.58 0.2 250);
+	--persona-15yo-bg: oklch(0.94 0.07 250);
+	--persona-15yo-border: oklch(0.84 0.11 250);
+	--persona-15yo-gradient: oklch(0.7 0.12 250);
+
+	--persona-pirate-accent: oklch(0.6 0.24 25);
+	--persona-pirate-bg: oklch(0.94 0.07 20);
+	--persona-pirate-border: oklch(0.84 0.13 22);
+	--persona-pirate-gradient: oklch(0.7 0.14 25);
+
+	--persona-comedian-accent: oklch(0.82 0.18 90);
+	--persona-comedian-bg: oklch(0.95 0.08 88);
+	--persona-comedian-border: oklch(0.87 0.12 85);
+	--persona-comedian-gradient: oklch(0.85 0.1 90);
+
+	--persona-poet-accent: oklch(0.6 0.22 300);
+	--persona-poet-bg: oklch(0.94 0.07 295);
+	--persona-poet-border: oklch(0.84 0.12 298);
+	--persona-poet-gradient: oklch(0.7 0.12 300);
+
+	--persona-alien-accent: oklch(0.6 0.2 150);
+	--persona-alien-bg: oklch(0.94 0.07 148);
+	--persona-alien-border: oklch(0.84 0.11 150);
+	--persona-alien-gradient: oklch(0.7 0.12 150);
+}
+
+.dark {
+	--background: oklch(0.16 0.015 30);
+	--foreground: oklch(0.93 0.01 75);
+	--card: oklch(0.2 0.015 30);
+	--card-foreground: oklch(0.93 0.01 75);
+	--popover: oklch(0.2 0.015 30);
+	--popover-foreground: oklch(0.93 0.01 75);
+	--primary: oklch(0.7 0.17 25);
+	--primary-foreground: oklch(0.15 0.01 30);
+	--secondary: oklch(0.25 0.015 30);
+	--secondary-foreground: oklch(0.93 0.01 75);
+	--muted: oklch(0.25 0.012 35);
+	--muted-foreground: oklch(0.65 0.015 50);
+	--accent: oklch(0.28 0.02 35);
+	--accent-foreground: oklch(0.93 0.01 75);
+	--destructive: oklch(0.704 0.191 22.216);
+	--border: oklch(1 0 0 / 10%);
+	--input: oklch(1 0 0 / 15%);
+	--ring: oklch(0.7 0.17 25);
+	--chart-1: oklch(0.488 0.243 264.376);
+	--chart-2: oklch(0.696 0.17 162.48);
+	--chart-3: oklch(0.769 0.188 70.08);
+	--chart-4: oklch(0.627 0.265 303.9);
+	--chart-5: oklch(0.645 0.246 16.439);
+	--sidebar: oklch(0.18 0.015 30);
+	--sidebar-foreground: oklch(0.93 0.01 75);
+	--sidebar-primary: oklch(0.7 0.17 25);
+	--sidebar-primary-foreground: oklch(0.15 0.01 30);
+	--sidebar-accent: oklch(0.28 0.02 35);
+	--sidebar-accent-foreground: oklch(0.93 0.01 75);
+	--sidebar-border: oklch(1 0 0 / 10%);
+	--sidebar-ring: oklch(0.7 0.17 25);
+
+	/* Persona dark mode tokens — low lightness, low chroma */
+	--persona-5yo-accent: oklch(0.75 0.14 75);
+	--persona-5yo-bg: oklch(0.25 0.04 80);
+	--persona-5yo-border: oklch(0.35 0.05 80);
+	--persona-5yo-gradient: oklch(0.3 0.06 75);
+
+	--persona-15yo-accent: oklch(0.65 0.16 250);
+	--persona-15yo-bg: oklch(0.25 0.04 250);
+	--persona-15yo-border: oklch(0.35 0.05 250);
+	--persona-15yo-gradient: oklch(0.3 0.06 250);
+
+	--persona-pirate-accent: oklch(0.65 0.18 25);
+	--persona-pirate-bg: oklch(0.25 0.04 25);
+	--persona-pirate-border: oklch(0.35 0.06 25);
+	--persona-pirate-gradient: oklch(0.3 0.06 25);
+
+	--persona-comedian-accent: oklch(0.8 0.14 90);
+	--persona-comedian-bg: oklch(0.25 0.04 85);
+	--persona-comedian-border: oklch(0.35 0.05 85);
+	--persona-comedian-gradient: oklch(0.3 0.06 90);
+
+	--persona-poet-accent: oklch(0.65 0.18 300);
+	--persona-poet-bg: oklch(0.25 0.04 300);
+	--persona-poet-border: oklch(0.35 0.05 300);
+	--persona-poet-gradient: oklch(0.3 0.06 300);
+
+	--persona-alien-accent: oklch(0.65 0.16 150);
+	--persona-alien-bg: oklch(0.25 0.04 150);
+	--persona-alien-border: oklch(0.35 0.05 150);
+	--persona-alien-gradient: oklch(0.3 0.06 150);
+}
+
+/* Keyframes — GPU-composited (transform + opacity only) */
+@keyframes fade-in-up {
+	from {
+		opacity: 0;
+		transform: translateY(12px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fade-in-scale {
+	from {
+		opacity: 0;
+		transform: scale(0.92);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes float {
+	0%, 100% {
+		transform: translateY(0) rotate(0deg);
+	}
+	50% {
+		transform: translateY(-12px) rotate(3deg);
+	}
+}
+
+@keyframes wiggle {
+	0%, 100% {
+		transform: rotate(0deg);
+	}
+	25% {
+		transform: rotate(-8deg);
+	}
+	75% {
+		transform: rotate(8deg);
+	}
+}
+
+@keyframes bounce-in {
+	0% {
+		opacity: 0;
+		transform: scale(0.3);
+	}
+	50% {
+		opacity: 1;
+		transform: scale(1.08);
+	}
+	70% {
+		transform: scale(0.95);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes blink {
+	0%, 100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+}
+
+/* Animation utility classes */
+.animate-fade-in-up {
+	animation: fade-in-up 0.5s ease-out both;
+}
+
+.animate-fade-in-scale {
+	animation: fade-in-scale 0.4s ease-out both;
+}
+
+.animate-float {
+	animation: float 6s ease-in-out infinite;
+}
+
+.animate-wiggle {
+	animation: wiggle 0.4s ease-in-out;
+}
+
+.animate-bounce-in {
+	animation: bounce-in 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+.animate-blink {
+	animation: blink 1s step-end infinite;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+	}
+  body {
+    @apply bg-background text-foreground;
+	}
+}
