@@ -39,7 +39,7 @@
 		{
 			"binding": "DB",
 			"database_name": "explain-like-5-db",
-			"database_id": "local",
+			"database_id": "5afc6a3b-cee8-4eef-b718-c539f8a81b5c",
 			"migrations_dir": "src/db/migrations"
 		}
 	]
