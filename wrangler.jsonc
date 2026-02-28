@@ -32,6 +32,10 @@
 			"service": "explain-like-5-v2"
 		}
 	],
+	"routes": [
+		{ "pattern": "explainlike5.com", "custom_domain": true },
+		{ "pattern": "www.explainlike5.com", "custom_domain": true }
+	],
 	"observability": {
 		"enabled": true
 	},

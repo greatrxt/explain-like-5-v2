@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import { Nunito, Baloo_2, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import { Toaster } from "sonner";
 
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 import "./globals.css";
+
+const GA_ID = "G-51H6XNELTW";
 
 const nunito = Nunito({
   variable: "--font-nunito",
@@ -51,6 +54,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      {GA_ID && (
+        <>
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+            strategy="afterInteractive"
+          />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}');`}
+          </Script>
+        </>
+      )}
       <body
         className={`${nunito.variable} ${baloo2.variable} ${geistMono.variable} font-sans antialiased`}
       >
